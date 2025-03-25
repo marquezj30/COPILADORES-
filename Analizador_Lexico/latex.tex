@@ -1,0 +1,322 @@
+\documentclass{article}
+\usepackage{graphicx} % Para insertar imágenes
+\usepackage{longtable} % Para tablas largas
+\usepackage{array} % Para formatear columnas
+
+\title{COPILADORES}
+\author{\\johan Leonardo Márquez Zúñiga \\ Diego Nova Rosas \\ Angélica Castillo Tovar \\ Renzo Murrillo Álvarez}
+\date{March 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+El presente trabajo muestra cómo logramos integrar un nuevo lenguaje utilizando como herramienta una librería de Python, la cual nos permite compilar diversos ejemplos, algunos de los cuales presentaremos a lo largo del documento. 
+
+Para llevar a cabo este desarrollo, fue necesario diseñar y estructurar una tabla en la que definimos nuestros propios tokens. Estos tokens fueron diseñados siguiendo una lógica similar a la de los lenguajes C++ y Python, lo que nos permitió establecer una sintaxis coherente y funcional. 
+
+Además, durante el proceso de implementación, analizamos las diferencias y similitudes entre ambos lenguajes con el objetivo de adaptar sus características de manera eficiente en nuestro nuevo lenguaje.
+
+\section{Tabla de Tokens y Expreciones}
+
+\renewcommand{\arraystretch}{1.3} % Aumenta el espaciado entre filas para mejorar la legibilidad
+
+\begin{longtable}{|l|l|}
+    \hline
+    \textbf{Token} & \textbf{Expresiones} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Token} & \textbf{Expresiones} \\
+    \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+    var & r'\#[a-zA-Z\_][a-zA-Z0-9\_]*' \\ \hline
+    letter & '[a-zA-Z]+' \\ \hline
+    number & '[0-9]+' \\ \hline
+    edad & + \\ \hline
+    less & - \\ \hline
+    mult & * \\ \hline
+    div & / \\ \hline
+    left\_por & ( \\ \hline
+    right\_por & ) \\ \hline
+    def COMMENT & r'\textless--.*?--\textgreater' \\ \hline
+    while & while \\ \hline
+    for & for \\ \hline
+    if & if \\ \hline
+    switch & switch \\ \hline
+    else & else \\ \hline
+    else if & r'else' \\ \hline
+    break & broken \\ \hline
+    punto\_coma & ; \\ \hline
+    menor & \textless \\ \hline
+    mayor & \textgreater \\ \hline
+    igual & = \\ \hline
+    menor\_igual & \textless= \\ \hline
+    mayor\_igual & \textgreater= \\ \hline
+    diferente & \textless|\textgreater \\ \hline
+    igual\_que & == \\ \hline
+    and & @ \\ \hline
+    or & // \\ \hline
+    comment & r'\textless--.*?--\textgreater' \\ \hline
+    funk\_return & funk\_ret \\ \hline
+    funk\_not\_return & funk\_not\_ret \\ \hline
+    imprimir & r"imprimir\s*\(\s*'([a-zA-Z0-9_ ])'\s\)\s*;" \\ \hline
+    main & main \\ \hline
+    inicio & \{ \\ \hline
+    fin & \} \\ \hline
+    return & ret \\ \hline
+    id (para factorial, num, etc) & r'[a-zA-Z\_][a-zA-Z0-9\_]*' \\ \hline
+\end{longtable}
+\section{Librerías y Análisis Léxico}
+
+\subsection{Importación de Librerías y Definición de Tokens}
+
+\begin{verbatim}
+import ply.lex as lex
+
+# Lista de tokens
+tokens = ("IGUAL", "NUMBER", "ADD", "LESS", 
+"MULT", "DIV", "LEFT_POR", "RIGHT_POR","INICIO", "FIN", 
+"VAR", "WHILE","FOR","IF","ELSE_IF", 
+"COMMENT","BREAK","PUNTO_COMA", "MENOR",
+"MAYOR", "MAYOR_IGUAL", "MENOR_IGUAL",
+"IGUAL_QUE","DIFERENTE", "AND", "OR", 
+"FUNK_RET", "FUNK_NOT_RET", "MAIN", 
+"RETURN", "IMPRIMIR", "ID")
+\end{verbatim}
+
+Se importa la librería **PLY (Python Lex-Yacc)** para la construcción del analizador léxico.  definimos  una lista de tokens, que son palabras clave o símbolos del lenguaje personalizado.
+
+---
+
+\subsection{Definición de Expresiones Regulares para Tokens Simples}
+
+\begin{verbatim}
+# Expresiones regulares para tokens simples
+t_IGUAL = r'\='
+t_ADD       = r'\+'
+t_LESS      = r'\-'
+t_MULT      = r'\.'
+t_DIV       = r'/'
+t_LEFT_POR  = r'\('
+t_RIGHT_POR = r'\)'
+t_DIFERENTE = r'\textless{}\textgreater{}'
+t_INICIO = r'{'
+t_FIN = r'}'
+t_MENOR = r'\textless{}'
+t_MAYOR = r'\textgreater{}'
+t_MENOR_IGUAL = r'\textless{}='
+t_MAYOR_IGUAL = r'\textgreater{}='
+t_PUNTO_COMA = r';'
+t_IGUAL_QUE = r'=='
+t_AND = r'@'
+t_OR = r'//'
+\end{verbatim}
+
+Aquí  definimos las expresiones regulares para reconocer los operadores básicos del lenguaje, como `+`, `-`, `.` (multiplicación en este lenguaje), `\textless{}\textgreater{}` (diferente), y `@` (operador lógico AND).
+
+---
+
+\subsection{Definición de Tokens para Palabras Clave}
+
+\begin{verbatim}
+#imprimir
+def t_IMPRIMIR(t):
+    r"imprimir\s*\(\s*'([a-zA-Z0-9_ ])'\s\)\s*;"
+    return t
+
+#retornar
+def t_RETURN(t):
+    r'ret'
+    return t
+
+#funciones
+def t_FUNK_RET(t):
+    r'funk_ret'
+    return t
+
+def t_FUNK_NOT_RET(t):
+    r'funk_not_ret'
+    return t
+\end{verbatim}
+
+Estas funciones definen los tokens correspondientes a palabras clave del lenguaje.  
+- **"imprimir"**: Se detecta la palabra clave `imprimir()`.  
+- **"ret"**: Se usa para el `return`.  
+- **"funk_ret" y "funk_not_ret"**: Se identifican las funciones con o sin retorno.
+
+---
+
+\subsection{Tokens para Estructuras de Control y Variables}
+
+\begin{verbatim}
+# Expresión regular while
+def t_WHILE(t):
+    r'while'
+    return t
+
+# Expresión regular para variables que empiezan con \#
+def t_VAR(t):
+    r'\# [a-zA-Z_][a-zA-Z0-9_]*'
+    return t
+
+# COMENTARIOS VDM
+def t_COMMENT(t):
+    r'\texttt{\textless{}--.*?--\textgreater{}}'
+    return t
+\end{verbatim}
+
+Se definen expresiones regulares para estructuras de control como `while`, variables que comienzan con `\#`, y comentarios delimitados por `\texttt{\textless{}-- ... --\textgreater{}}`.
+
+---
+
+\subsection{Lectura de Código Fuente y Generación de Tokens}
+
+\begin{verbatim}
+# Construcción del analizador léxico
+lexer = lex.lex()
+
+# Leer el archivo de entrada
+archivo = input("Ingrese el nombre del archivo de código fuente: ")
+
+try:
+    with open(archivo, "r", encoding="utf-8") as file:
+        data = file.read()
+except FileNotFoundError:
+    print(f"Error: No se encontró el archivo '{archivo}'")
+    exit(1)
+
+# Pasar la entrada al lexer
+lexer.input(data)
+
+#almacenando los tokens en una lista
+tokens_list = []
+
+# Obtener los tokens
+print("\nTokens detectados:")
+for tok in lexer:
+    print(tok)
+    tokens_list.append({"tipo": tok.type, "valor": tok.value, "linea": tok.lineno})
+
+# Mostrar los tokens en formato de lista
+print("\nTokens detectados en formato de diccionario:")
+print(tokens_list)
+\end{verbatim}
+
+Aquí creamos el analizador léxico,leemos un archivo de entrada y se generan los tokens.  
+- **`lexer.input(data)`** procesa el código.  
+- **Se imprimen y almacenan los tokens** en una lista de diccionarios.  
+
+---
+
+**¿Qué cambió en comparación con un lenguaje convencional?**  
+- Se usa **`@` para AND** en lugar de `and`.  
+- **`.` como multiplicador** en vez de `*`.  
+- **`\textless{}\textgreater{}` para "diferente"** en vez de `!=`.  
+- Las variables comienzan con `\#`, como en `\#var1`.  
+- Los comentarios usan `\texttt{\textless{}-- --\textgreater{}}` en lugar de `#` o `/* */`.  
+- Definiciones de funciones con `funk_ret` y `funk_not_ret`.  
+- La impresión de texto usa `imprimir()` en vez de `print()`.  
+
+
+\section{Ejemplos}
+
+\subsection{Ejemplo 1: Cálculo de Factorial con Recursión}
+
+\begin{verbatim}
+<-- ejemplo1 -->
+
+funk_ret factorial (#n){
+    if(n==0)
+        ret 1;
+    else
+        ret n . factorial(n-1);
+}
+
+main () {
+    #num=2
+    imprimir('resultado');
+    imprimir(factorial(num));
+}
+\end{verbatim}
+
+Este ejemplo define una función llamada `factorial`, la cual calcula el factorial de un número usando recursión.  
+
+- La función `factorial(#n)` recibe un número como parámetro.  
+
+- Si `n` es igual a 0, devuelve 1. En caso contrario, devuelve `n` multiplicado por `factorial(n-1)`.  
+
+- En la función `main()`, se define la variable `#num` con un valor de `2`. Luego, se imprime la palabra "resultado" y el factorial del número ingresado.  
+
+**Cambio:** Se usa `funk_ret` en vez de `int`, `ret` en lugar de `return`, y `.` para multiplicación en vez de `*`.  
+
+---
+
+\subsection{Ejemplo 2: Condicionales y Ciclos}
+
+\begin{verbatim}
+<-- ejemplo2 -->
+
+if (#var1 + 10) {
+    while (#var2 - 5){
+        #var3 = #var1 . #var2;
+    }
+}
+\end{verbatim}
+
+En este fragmento de código, se combinan estructuras condicionales (`if`) y ciclos (`while`).  
+
+- La condición del `if` verifica si `#var1 + 10` es verdadero (es decir, diferente de 0).  
+
+- Si la condición se cumple, se entra en un bucle `while`, el cual continuará ejecutándose mientras `#var2 - 5` sea verdadero.  
+
+- Dentro del bucle, la variable `#var3` toma el valor del producto entre `#var1` y `#var2`.  
+
+**Cambio:** No es necesario `\textgreater 0` en el `if`, y `.` se usa para multiplicación en vez de `*`.  
+
+---
+
+\subsection{Ejemplo 3: Bucles Anidados con Impresión}
+
+\begin{verbatim}
+<-- ejemplo3 -->
+
+int main (){
+    #i;
+    #j;
+    for(i=1; i<=2;i++){
+        for(j=1;j<=2;j++){
+            imprimir('c');
+        }
+        imprimir(' ');
+    }
+    ret 0;
+}
+\end{verbatim}
+
+Este código implementa bucles `for` anidados para imprimir una secuencia de caracteres.  
+
+- Se declaran dos variables `#i` y `#j`.  
+
+- El primer bucle `for(i=1; i<=2; i++)` recorre los valores de `i` de 1 a 2.  
+
+- Dentro de este bucle, hay otro bucle `for(j=1; j<=2; j++)`, el cual imprime la letra `'c'` en cada iteración.  
+
+- Luego de completar el ciclo interno, se imprime un espacio `' '`.  
+
+**Cambio:** imprimir por un cout , ret por un return 
+
+
+
+\end{document}
+
