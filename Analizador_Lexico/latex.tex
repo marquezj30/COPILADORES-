@@ -123,7 +123,7 @@ t_AND = r'@'
 t_OR = r'//'
 \end{verbatim}
 
-Aquí  definimos las expresiones regulares para reconocer los operadores básicos del lenguaje, como `+`, `-`, `.` (multiplicación en este lenguaje), `\textless{}\textgreater{}` (diferente), y `@` (operador lógico AND).
+Aquí  definimos las expresiones regulares para reconocer los operadores básicos del lenguaje, como `+`, `-`, `.` (multiplicación en este lenguaje), `\textless{}\textgreater{}` (diferente), y (@) (operador lógico AND).
 
 ---
 
@@ -151,7 +151,7 @@ def t_FUNK_NOT_RET(t):
 \end{verbatim}
 
 Estas funciones definen los tokens correspondientes a palabras clave del lenguaje.  
-- **"imprimir"**: Se detecta la palabra clave `imprimir()`.  
+- **"imprimir"**: Se detecta la palabra clave (imprimir()).  
 - **"ret"**: Se usa para el `return`.  
 - **"funk_ret" y "funk_not_ret"**: Se identifican las funciones con o sin retorno.
 
@@ -176,7 +176,7 @@ def t_COMMENT(t):
     return t
 \end{verbatim}
 
-Se definen expresiones regulares para estructuras de control como `while`, variables que comienzan con `\#`, y comentarios delimitados por `\texttt{\textless{}-- ... --\textgreater{}}`.
+Se definen expresiones regulares para estructuras de control como (while), variables que comienzan con `\#`, y comentarios delimitados por `\texttt{\textless{}-- ... --\textgreater{}}`.
 
 ---
 
@@ -220,13 +220,13 @@ Aquí creamos el analizador léxico,leemos un archivo de entrada y se generan lo
 ---
 
 **¿Qué cambió en comparación con un lenguaje convencional?**  
-- Se usa **`@` para AND** en lugar de `and`.  
-- **`.` como multiplicador** en vez de `*`.  
-- **`\textless{}\textgreater{}` para "diferente"** en vez de `!=`.  
+- Se usa **`@` para (AND) en lugar de (and).  
+- **(.) como multiplicador** en vez de `*`.  
+- **`\textless{}\textgreater{}` para "diferente"** en vez de (!=).  
 - Las variables comienzan con `\#`, como en `\#var1`.  
 - Los comentarios usan `\texttt{\textless{}-- --\textgreater{}}` en lugar de `#` o `/* */`.  
-- Definiciones de funciones con `funk_ret` y `funk_not_ret`.  
-- La impresión de texto usa `imprimir()` en vez de `print()`.  
+- Definiciones de funciones con (funk_ret) y (funk_not_ret).  
+- La impresión de texto usa (imprimir()) en vez de `print().  
 
 
 \section{Ejemplos}
@@ -250,15 +250,15 @@ main () {
 }
 \end{verbatim}
 
-Este ejemplo define una función llamada `factorial`, la cual calcula el factorial de un número usando recursión.  
+Este ejemplo define una función llamada (factorial), la cual calcula el factorial de un número usando recursión.  
 
-- La función `factorial(#n)` recibe un número como parámetro.  
+- La función factorial(#n) recibe un número como parámetro.  
 
 - Si `n` es igual a 0, devuelve 1. En caso contrario, devuelve `n` multiplicado por `factorial(n-1)`.  
 
-- En la función `main()`, se define la variable `#num` con un valor de `2`. Luego, se imprime la palabra "resultado" y el factorial del número ingresado.  
+- En la función main(), se define la variable #num con un valor de 2. Luego, se imprime la palabra "resultado" y el factorial del número ingresado.  
 
-**Cambio:** Se usa `funk_ret` en vez de `int`, `ret` en lugar de `return`, y `.` para multiplicación en vez de `*`.  
+**Cambio:** Se usa funk_ret en vez de int, ret en lugar de return, y `.` para multiplicación en vez de `*`.  
 
 ---
 
@@ -274,15 +274,15 @@ if (#var1 + 10) {
 }
 \end{verbatim}
 
-En este fragmento de código, se combinan estructuras condicionales (`if`) y ciclos (`while`).  
+En este fragmento de código, se combinan estructuras condicionales (if) y ciclos (while).  
 
-- La condición del `if` verifica si `#var1 + 10` es verdadero (es decir, diferente de 0).  
+- La condición del if verifica si #var1 + 10 es verdadero (es decir, diferente de 0).  
 
-- Si la condición se cumple, se entra en un bucle `while`, el cual continuará ejecutándose mientras `#var2 - 5` sea verdadero.  
+- Si la condición se cumple, se entra en un bucle while, el cual continuará ejecutándose mientras #var2 - 5 sea verdadero.  
 
-- Dentro del bucle, la variable `#var3` toma el valor del producto entre `#var1` y `#var2`.  
+- Dentro del bucle, la variable #var3 toma el valor del producto entre #var1 y #var2.  
 
-**Cambio:** No es necesario `\textgreater 0` en el `if`, y `.` se usa para multiplicación en vez de `*`.  
+**Cambio:** No es necesario `\textgreater 0` en el if, y . se usa para multiplicación en vez de `*`.  
 
 ---
 
@@ -304,13 +304,13 @@ int main (){
 }
 \end{verbatim}
 
-Este código implementa bucles `for` anidados para imprimir una secuencia de caracteres.  
+Este código implementa bucles "for" anidados para imprimir una secuencia de caracteres.  
 
-- Se declaran dos variables `#i` y `#j`.  
+- Se declaran dos variables `#i y #j`.  
 
-- El primer bucle `for(i=1; i<=2; i++)` recorre los valores de `i` de 1 a 2.  
+- El primer bucle "for(i=1; i<=2; i++)" recorre los valores de "i" de 1 a 2.  
 
-- Dentro de este bucle, hay otro bucle `for(j=1; j<=2; j++)`, el cual imprime la letra `'c'` en cada iteración.  
+- Dentro de este bucle, hay otro bucle for(j=1; j<=2; j++), el cual imprime la letra "c" en cada iteración.  
 
 - Luego de completar el ciclo interno, se imprime un espacio `' '`.  
 
