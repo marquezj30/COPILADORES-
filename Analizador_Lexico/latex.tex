@@ -103,24 +103,24 @@ Se importa la librería **PLY (Python Lex-Yacc)** para la construcción del anal
 
 \begin{verbatim}
 # Expresiones regulares para tokens simples
-t_IGUAL = r'\='
-t_ADD       = r'\+'
-t_LESS      = r'\-'
-t_MULT      = r'\.'
-t_DIV       = r'/'
-t_LEFT_POR  = r'\('
-t_RIGHT_POR = r'\)'
-t_DIFERENTE = r'\textless{}\textgreater{}'
-t_INICIO = r'{'
-t_FIN = r'}'
-t_MENOR = r'\textless{}'
-t_MAYOR = r'\textgreater{}'
-t_MENOR_IGUAL = r'\textless{}='
-t_MAYOR_IGUAL = r'\textgreater{}='
-t_PUNTO_COMA = r';'
-t_IGUAL_QUE = r'=='
-t_AND = r'@'
-t_OR = r'//'
+t_IGUAL = r"="
+t_ADD       = r"\+"
+t_LESS      = r"-"
+t_MULT      = r"\."
+t_DIV       = r"/"
+t_LEFT_POR  = r"\("
+t_RIGHT_POR = r"\)"
+t_DIFERENTE = r"\textless{}\textgreater{}"
+t_INICIO = r"{"
+t_FIN = r"}"
+t_MENOR = r"\textless{}"
+t_MAYOR = r"\textgreater{}"
+t_MENOR_IGUAL = r"\textless{}="
+t_MAYOR_IGUAL = r"\textgreater{}="
+t_PUNTO_COMA = r";"
+t_IGUAL_QUE = r"=="
+t_AND = r"@"
+t_OR = r"//"
 \end{verbatim}
 
 Aquí  definimos las expresiones regulares para reconocer los operadores básicos del lenguaje, como `+`, `-`, `.` (multiplicación en este lenguaje), `\textless{}\textgreater{}` (diferente), y (@) (operador lógico AND).
@@ -315,7 +315,6 @@ Este código implementa bucles "for" anidados para imprimir una secuencia de car
 - Luego de completar el ciclo interno, se imprime un espacio `' '`.  
 
 **Cambio:** imprimir por un cout , ret por un return 
-
 
 
 \end{document}
