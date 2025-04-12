@@ -2,11 +2,11 @@
 import re
 
 token_exprs = [
-    ("plus",      r"\+"),
-    ("mul",       r"\*"),
+    ("plus",      r"plus"),
+    ("mul",       r"mul"),
     ("left_par",  r"\("),
     ("right_par", r"\)"),
-    ("hash",      r"#"),
+    ("int",      r"int"),
     ("whitespace", r"\s+"),
 ]
 
