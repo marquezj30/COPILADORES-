@@ -153,9 +153,7 @@ class LL1Parser:
 
             if top == 'e':
                 action = 'Epsilon (e), se omite'
-                # Añadir nodo epsilon
-                epsilon_node = Node('ε')
-                top_node.add_child(epsilon_node)
+                
             elif top == token_type:#se avanza al siguiente token y se guarda el valor real match int = int
                 action = f"[Match] {top}"
                 # En lugar de crear un nuevo nodo, completa el nodo actual (top_node)
