@@ -1,0 +1,5 @@
+﻿;int;mul;plus;left_par;right_par;$
+S;T X;NaN;NaN;T X;NaN;NaN
+X;NaN;NaN;plus S;NaN;e;e
+T;int Y;NaN;NaN;left_par S right_par;NaN;NaN
+Y;NaN;mul T;e;NaN;e;e
