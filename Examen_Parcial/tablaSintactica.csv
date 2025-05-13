@@ -1,0 +1,25 @@
+﻿;#;id;=;funk_ret;funk_not_ret;ret;if;else;while;for;(;);{;,;};num;<;>;<=;>=;<>;==;@;//;+;-;*;/;$
+S;DECLARACION S;E S;NaN;FUNCION S;FUNCION S;NaN;IF ELSE S;NaN;CICLO S;CICLO S;E S;NaN;NaN;NaN;NaN;E S;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;e
+DECLARACION;# id DECL_EXTRA;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+DECL_EXTRA;e;e; = E;e;e;e;e;e;e;e;e;e;NaN;e;e;e;e;e;e;e;e;NaN;e;e;e;e;e;e;e
+FUNCION;NaN;NaN;NaN;FUNK_RET;FUNK_NOT_RET;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+FUNK_RET;NaN;NaN;NaN;funk_ret ( PARAMS ) { INSTRUCCIONES ret E };NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+FUNK_NOT_RET;NaN;NaN;NaN;NaN;funk_not_ret ( PARAMS ) { INSTRUCCIONES };NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+PARAMS;NaN;id PARAMS';NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+PARAMS';e;e;NaN;e;e;e;e;e;e;e;e;e;NaN;, id PARAMS';NaN;e;e;e;e;e;e;NaN;e;e;NaN;e;e;e;e
+INSTRUCCIONES;SENTENCIA INSTRUCCIONES;SENTENCIA INSTRUCCIONES;NaN;SENTENCIA INSTRUCCIONES;SENTENCIA INSTRUCCIONES;e;SENTENCIA INSTRUCCIONES;NaN;SENTENCIA INSTRUCCIONES;SENTENCIA INSTRUCCIONES;NaN;e;NaN;NaN;e;SENTENCIA INSTRUCCIONES;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;e
+ASIGNACION;NaN;id = E;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+SENTENCIA;DECLARACION;ASIGNACION;NaN;FUNCION;FUNCION;NaN;IF ELSE;NaN;CICLO;CICLO;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+IF;NaN;NaN;NaN;NaN;NaN;NaN;if ( A ) { INSTRUCCIONES };NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+ELSE;e;e;e;e;e;e;e;else { INSTRUCCIONES };e;e;e;e;NaN;NaN;e;e;e;e;e;e;e;NaN;e;e;NaN;e;e;e;e
+CICLO;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;WHILE;FOR;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+WHILE;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;while ( A ) { INSTRUCCIONES };NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+FOR;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;for ( DECLARACION , A , E ) { INSTRUCCIONES }; A ; E { INSTRUCCIONES };NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+A;NaN;id COMP id A';NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+A';e;e;e;e;e;e;e;e;e;e;e;e;NaN;e;NaN;e;e;e;e;e;e;NaN;LOGICO id COMP id A';e;NaN;e;e;e;e
+E;NaN;T E';NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;T E';NaN;NaN;NaN;NaN;T E';NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+E';e;e;e;e;e;e;e;e;e;e;e;e;e;e;e;e;e;e;e;e;e;NaN;e;OPER T E';OPER T E';OPER T E';OPER T E';e;e
+T;NaN;id;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;( E );NaN;NaN;NaN;NaN;num;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+COMP;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;<;>;<=;>=;<>;==;NaN;NaN;NaN;NaN;NaN;NaN;NaN
+LOGICO;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;@;//;NaN;NaN;NaN;NaN;NaN
+OPER;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;+;-;*;/;NaN
