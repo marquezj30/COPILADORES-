@@ -1,0 +1,17 @@
+=== Tabla de Símbolos Completa ===
+
+Variables globales:
+  <Variable y:auto>
+
+Funciones:
+  <Function f1(a:auto) -> no_return>
+    Locales:
+      <Variable x:auto>
+      <Variable h:auto>
+  <Function f3(c:auto) -> no_return>
+    Locales:
+      <Variable l:auto>
+  <Function f2(b:auto) -> return>
+    Locales:
+      <Variable d:auto>
+      <Variable l:auto>

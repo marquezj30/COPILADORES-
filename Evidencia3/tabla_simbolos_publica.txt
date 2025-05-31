@@ -1,0 +1,9 @@
+=== ELIMINANDO LOCALES ===
+
+Variables globales:
+  <Variable y:auto>
+
+Funciones:
+  <Function f1(a:auto) -> no_return>
+  <Function f3(c:auto) -> no_return>
+  <Function f2(b:auto) -> return>
