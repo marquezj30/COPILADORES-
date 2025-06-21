@@ -1,0 +1,12 @@
+S -> DECLARACION;
+DECLARACION -> #;
+DECLARACION -> id;
+DECLARACION -> DECL_EXTRA;
+DECL_EXTRA -> =;
+DECL_EXTRA -> E;
+E -> T;
+T -> num;
+E -> E';
+E' -> e;
+S -> S;
+S -> e;
