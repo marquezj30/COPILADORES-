@@ -1,0 +1,6 @@
+=== Tabla de Símbolos Pública ===
+
+Variables globales:
+  <Variable h:auto>
+
+Funciones:

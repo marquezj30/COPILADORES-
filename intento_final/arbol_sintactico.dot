@@ -1,0 +1,27 @@
+digraph G {
+  node0 [label="S", shape=ellipse];
+  node0 -> node1;
+  node1 [label="DECLARACION", shape=ellipse];
+  node1 -> node2;
+  node2 [label="#", shape=ellipse];
+  node1 -> node3;
+  node3 [label="id", shape=ellipse];
+  node1 -> node4;
+  node4 [label="DECL_EXTRA", shape=ellipse];
+  node4 -> node5;
+  node5 [label="=", shape=ellipse];
+  node4 -> node6;
+  node6 [label="E", shape=ellipse];
+  node6 -> node7;
+  node7 [label="T", shape=ellipse];
+  node7 -> node8;
+  node8 [label="num", shape=ellipse];
+  node6 -> node9;
+  node9 [label="E'", shape=ellipse];
+  node9 -> node10;
+  node10 [label="e", shape=ellipse];
+  node0 -> node11;
+  node11 [label="S", shape=ellipse];
+  node11 -> node12;
+  node12 [label="e", shape=ellipse];
+}
